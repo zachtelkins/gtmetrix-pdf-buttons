@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GTmetrix PDF Buttons Settings</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #333;
+      letter-spacing: 0.3px;
+    }
+    h1 {
+      color: #333;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    
+    .section {
+      margin-bottom: 30px;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border: 2px solid #eee;
+    }
+    
+    .section:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
+    }
+    
+    h2 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #444;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="color"],
+    select {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 0.3px;
+    }
+    input[type="color"] {
+      height: 40px;
+      cursor: pointer;
+    }
+    select {
+      cursor: pointer;
+      background-color: white;
+    }
+    .color-container {
+      display: flex;
+      gap: 10px;
+    }
+    .color-input {
+      flex: 1;
+    }
+    
+    button#saveSettings {
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      margin-top: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      font-family: 'Roboto', sans-serif;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #35dece, #832ad0);
+      color: #47ffbf;
+    }
+    
+    button#saveSettings:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transform: translateY(-2px);
+    }
+    
+    .preview {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .preview-button {
+      display: inline-block;
+      padding: 10px 18px;
+      margin: 5px;
+      font-weight: 500;
+      font-size: 14px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 0.3px;
+    }
+    .preset-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+    .preset-button {
+      flex: 1;
+      min-width: 150px;
+      padding: 12px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .preset-button.active {
+      border-color: rgba(0,0,0,0.3);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .preset-button .preset-name {
+      margin-top: 8px;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    /* Animated link with gradient border */
+    .developer-link {
+      display: inline-block;
+      position: relative;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.4px;
+      color: #333;
+      text-decoration: none;
+      padding-bottom: 5px;
+      background: linear-gradient(to right, #35dece, #832ad0, #ff9966, #134e5e, #eb6ba8, #35dece);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGradient 8s linear infinite;
+    }
+    
+    .developer-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, #35dece, #832ad0, #ff9966, #134e5e, #eb6ba8, #35dece);
+      background-size: 200% auto;
+      animation: borderGradient 8s linear infinite;
+      border-radius: 2px;
+    }
+    
+    @keyframes textGradient {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    
+    @keyframes borderGradient {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    
+    .version {
+      font-size: 12px;
+      color: #999;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>GTmetrix PDF Buttons Settings</h1>
+  
+  <div class="section">
+    <h2>Color Theme</h2>
+    <div class="form-group">
+      <label for="presetSelector">Select a color preset:</label>
+      <select id="presetSelector">
+        <option value="teal">Teal & Purple (Default)</option>
+        <option value="sunset">Sunset (Orange & Red)</option>
+        <option value="forest">Forest Dream (Green & Pink)</option>
+        <option value="custom">Custom Colors</option>
+      </select>
+    </div>
+    
+    <div class="preset-buttons">
+      <div class="preset-button" id="preset-teal" data-preset="teal">
+        <div class="preset-name">Teal & Purple</div>
+      </div>
+      <div class="preset-button" id="preset-sunset" data-preset="sunset">
+        <div class="preset-name">Sunset</div>
+      </div>
+      <div class="preset-button" id="preset-forest" data-preset="forest">
+        <div class="preset-name">Forest Dream</div>
+      </div>
+    </div>
+    
+    <div id="custom-colors" style="margin-top: 20px;">
+      <div class="form-group">
+        <label for="primaryColor">Primary Color (Gradient Start):</label>
+        <input type="color" id="primaryColor" value="#35dece">
+      </div>
+      
+      <div class="form-group">
+        <label for="secondaryColor">Secondary Color (Gradient End):</label>
+        <input type="color" id="secondaryColor" value="#832ad0">
+      </div>
+      
+      <div class="form-group">
+        <label for="textColor">Text Color:</label>
+        <input type="color" id="textColor" value="#47ffbf">
+      </div>
+    </div>
+    
+    <div class="preview">
+      <h3>Button Preview:</h3>
+      <div id="buttonPreview" class="preview-button">Download PDF</div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>Button Appearance</h2>
+    <div class="form-group">
+      <label for="buttonMargin">Button Margin (px):</label>
+      <input type="number" id="buttonMargin" min="0" max="50" value="10">
+    </div>
+    
+    <div class="form-group">
+      <label for="borderRadius">Border Radius (px):</label>
+      <input type="number" id="borderRadius" min="0" max="50" value="4">
+    </div>
+  </div>
+  
+  <button id="saveSettings">Save Settings</button>
+  
+  <div class="footer">
+    <a href="https://www.zachwp.com/" target="_blank" class="developer-link">Extension Developed by ZachWP</a>
+    <div class="version">GTmetrix PDF Buttons v1.0</div>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>

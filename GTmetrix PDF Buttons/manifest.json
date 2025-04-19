@@ -1,0 +1,63 @@
+{
+    "manifest_version": 3,
+    "name": "GTmetrix PDF Buttons",
+    "version": "1.0",
+    "description": "Adds buttons to easily download GTmetrix reports as PDFs",
+    "permissions": [
+  "activeTab", 
+  "scripting", 
+  "storage",
+  "downloads",
+  "tabs"
+],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/gtm-pdf-16x16.png",
+        "48": "images/gtm-pdf-48x48.png",
+        "128": "images/gtm-pdf-128x128.png"
+      }
+    },
+    "icons": {
+      "16": "images/gtm-pdf-16x16.png",
+      "48": "images/gtm-pdf-48x48.png",
+      "128": "images/gtm-pdf-128x128.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://gtmetrix.com/reports/*"],
+        "js": ["content.js"],
+        "css": ["styles.css"]
+      }
+    ],
+    "commands": {
+      "download-summary": {
+        "suggested_key": {
+          "default": "Alt+1"
+        },
+        "description": "Download Summary Report"
+      },
+      "download-full": {
+        "suggested_key": {
+          "default": "Alt+2"
+        },
+        "description": "Download Full Report"
+      },
+      "download-both": {
+        "suggested_key": {
+          "default": "Alt+3"
+        },
+        "description": "Download Both Reports"
+      }
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "options_page": "options.html",
+    "web_accessible_resources": [
+      {
+        "resources": ["fonts/*.woff2"],
+        "matches": ["<all_urls>"]
+      }
+    ]
+  }
